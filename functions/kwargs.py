@@ -1,3 +1,8 @@
+'''
+*args: collects extra positional (non-keyword) arguments as a tuple.
+**kwargs: collects extra keyword arguments as a dictionary.
+'''
+
 def create_user(**user_data):
     for key,value in user_data.items():
          print(f"{key}: {value}", end='\n')
@@ -33,3 +38,25 @@ def point(x, y):
     print(x, y)
 
 point(**data)
+
+
+def student_info(*args, **kwargs):
+    print("Subjects:", args)        # Positional arguments
+    print("Details:", kwargs)       # Keyword arguments
+
+# Passing subjects as *args and details as **kwargs
+student_info("Math", "Science", "English", Name="Alice", Age=20, City="New York")
+
+
+
+
+def myFun(*args, **kwargs):
+    print("Non-Keyword Arguments (*args):")
+    for arg in args:
+        print(arg)
+
+    print("\nKeyword Arguments (**kwargs):")
+    for key, value in kwargs.items():
+        print(f"{key} == {value}")
+
+myFun('Hey', 'Welcome', first='Geeks', mid='for', last='Geeks')

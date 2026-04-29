@@ -36,3 +36,14 @@ def total_sum(*numbers):
     return sum(numbers)
 
 print(total_sum(1, 2, 3, 4, 5))
+
+
+
+#nested functions
+def f1():
+    s = 'I love python'
+    def f2():
+        print(s)
+        
+    f2()
+f1()
