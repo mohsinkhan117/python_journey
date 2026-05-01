@@ -35,6 +35,8 @@ b = {1, 2, 3, 4}
 print(a.issubset(b))    # True
 print(b.issuperset(a))  # True
 
+print(a.isdisjoint(b))  # No common element ?
+
 #union of set
 a = {"x", "y"}
 b = {"y", "z"}
