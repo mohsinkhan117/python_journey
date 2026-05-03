@@ -45,3 +45,61 @@ pop(): Removes and returns an element from the right end.
 popleft(): Removes and returns an element from the left end.
 clear(): Removes all elements from the deque.
 '''
+from collections import deque
+dq = deque([10, 20, 30])
+
+# Add elements to the right
+dq.append(40)  
+
+# Add elements to the left
+dq.appendleft(5)  
+
+# extend(iterable)
+dq.extend([50, 60, 70]) 
+print("After extend([50, 60, 70]):", dq)
+
+# extendleft(iterable)
+dq.extendleft([0, 5])  
+print("After extendleft([0, 5]):", dq)
+
+# remove method
+dq.remove(20)
+print("After remove(20):", dq)
+
+# Remove elements from the right
+dq.pop()
+
+# Remove elements from the left
+dq.popleft()  
+print("After pop and popleft:", dq)
+
+# clear() - Removes all elements from the deque
+dq.clear()  # deque: []
+print("After clear():", dq)
+
+
+
+
+dq =deque([1, 2, 3, 3, 4, 2, 4])
+
+# Accessing elements by index
+print(dq[0])  
+print(dq[-1]) 
+
+# Finding the length of the deque
+print(len(dq))
+
+# 1. Counting occurrences of a value
+print(dq.count(20))  # Occurrences of 20
+print(dq.count(30))  # Occurrences of 30
+
+# 2. Rotating the deque
+dq.rotate(2)  # Rotate the deque 2 steps to the right
+print(dq)
+
+dq.rotate(-3)  # Rotate the deque 3 steps to the left
+print(dq)
+
+# 3. Reversing the deque
+dq.reverse()  # Reverse the deque
+print(dq)
