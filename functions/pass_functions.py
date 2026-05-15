@@ -14,3 +14,46 @@ def fun():
     pass
 
 fun() # Call the function
+#Explanation: fun() is defined but contains pass statement, so it does nothing when called and program continues execution without any errors.
+
+
+'''
+In Conditional Statements
+In conditional statements, when no action is needed but a block is still required, pass statement acts as a 
+placeholder to keep the code syntactically valid.'''
+
+x = 10
+
+if x > 5:
+    pass  # Placeholder for future logic
+else:
+    print("x is 5 or less")
+
+'''In Loops
+In loops, pass can be used to skip writing any action during a specific
+ iteration while still keeping the loop structure correct.'''
+
+for i in range(5):
+    if i == 3:
+        pass  # Do nothing when i is 3
+    else:
+        print(i)
+
+
+'''In Classes
+The pass statement allows defining empty classes or
+ methods that act as placeholders until actual functionality is added later.'''
+
+class EmptyClass:
+    pass  # No methods or attributes yet
+
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    
+    def greet(self):
+        pass  # Placeholder for greet method
+
+# Creating an instance of the class
+p = Person("Emily", 30)
