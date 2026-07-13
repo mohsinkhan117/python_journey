@@ -363,6 +363,9 @@ Python
 
 print(msg)
 
+
+
+# -----------------------------------------------------------
 s1 = "The BodyGuard is the best album"
 
 
@@ -371,8 +374,6 @@ s1 = "The BodyGuard is the best album"
 
 pattern = r"Body"
 
-
-# -----------------------------------------------------------
 # Use the search() function to search for the pattern in the string
 
 result = re.search(pattern, s1)
