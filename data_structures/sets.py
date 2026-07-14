@@ -11,6 +11,9 @@ s={1,3,4,6,3}
 print(s)
 print(type(s))
 
+#check if an element is present in set 
+print (6 in s)
+print (10 in s)
 # typecasting list to set
 s = set(["a", "b", "c"])
 print(s)
