@@ -1,4 +1,19 @@
+import requests
 import pandas as pd
+
+filename = "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/LXjSAttmoxJfEG6il1Bqfw/Product-sales.csv"
+
+def download(url, filename):
+    response = requests.get(url)
+    if response.status_code == 200:
+        with open(filename, "wb") as f:
+            f.write(response.content)
+
+
+download(filename, "Product-sales.csv")
+df = pd.read_csv("Product-sales.csv")
+
+
 
 file1 = r"D:\Python_journey\_5_files\employees.csv"
 
