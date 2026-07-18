@@ -1,17 +1,6 @@
 import requests
 
 # ============================================================
-# PYTHON 'requests' LIBRARY — REST API QUICK REVISION SHEET
-# Covers: GET, POST, PUT, PATCH, DELETE, headers, query params,
-# payload/body (data vs json), status codes, sessions, auth,
-# error handling, and free practice API URLs to test against.
-# ============================================================
-#
-# NOTE: this script makes REAL network calls, so run it on your
-# own machine with internet access (not in a restricted sandbox).
-# pip install requests   -> if not already installed
-#
-# ============================================================
 # FREE PRACTICE API URLs (no signup / no API key needed)
 # ============================================================
 #   https://jsonplaceholder.typicode.com   -> fake REST API: posts, users, comments, todos
@@ -23,7 +12,7 @@ import requests
 # ============================================================
 
 
-BASE = "https://jsonplaceholder.typicode.com"   # used throughout this file
+BASE = "https://jsonplaceholder.typicode.com"   
 
 
 print("\n================= GET REQUEST (READ DATA) =================")
