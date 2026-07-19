@@ -4,7 +4,7 @@ import pandas as pd
 from io import StringIO
 
 
-url = "https://en.wikipedia.org/wiki/IBM"   # (fixed the missing closing quote from the original)
+url = "https://www.scrapethissite.com/pages/forms/"
 
 
 print("\n================= FETCHING THE PAGE =================")
@@ -42,8 +42,8 @@ first_table = soup.find("table")                        # first <table> tag
 print(first_table.get("class"))                         # .get(attr) -> reads an attribute safely (None if missing)
 
 # find() with attribute filters -> narrow down by class, id, etc.
-infobox = soup.find("table", {"class": "infobox"})      # Wikipedia's summary box on the right
-print(infobox is not None)
+hockey_table = soup.find("table", {"class": "table"})   # this site's main data table
+print(hockey_table is not None)
 
 # -----------------------------------------------------------
 
@@ -74,7 +74,7 @@ print("\n================= CSS SELECT() — CSS-STYLE SELECTORS ================
 # select() -> works like CSS selectors (great if you know a bit of CSS)
 paragraphs_css = soup.select("p")                 # same as find_all("p")
 headings_css = soup.select("h2, h3")               # comma = "or", matches either tag
-infobox_css = soup.select("table.infobox")         # ".infobox" -> matches class="infobox"
+main_table_css = soup.select("table.table")         # ".table" -> matches class="table"
 first_bold_css = soup.select_one("b")               # select_one() -> like find(), just the first match
 print(len(paragraphs_css), len(headings_css))
 
@@ -92,7 +92,7 @@ print(sample_tag.find_next("p"))        # the NEXT <p> tag anywhere after this o
 print("\n================= EXTRACTING TABLES: MANUAL BEAUTIFULSOUP WAY =================")
 # The "hard way" - manually walking table -> rows -> cells.
 # Useful when a table is irregular and pandas can't parse it cleanly.
-table = soup.find("table", {"class": "wikitable"})   # a normal data table (not the infobox)
+table = soup.find("table", {"class": "table"})   # this site's hockey team stats table
 
 rows_data = []
 if table:
@@ -102,7 +102,7 @@ if table:
         row_text = [cell.get_text(strip=True) for cell in cells]
         rows_data.append(row_text)
 
-print(rows_data[:3])   # first few rows as plain lists of strings
+print(rows_data[:3])   # first few rows as plain lists of strings -> team name, year, wins, losses, etc.
 
 # Turning that manually-parsed data into a DataFrame ourselves
 manual_df = pd.DataFrame(rows_data[1:], columns=rows_data[0] if rows_data else None)
@@ -121,18 +121,17 @@ tables = pd.read_html(url)          # passing a URL directly works out of the bo
 #   tables = pd.read_html(StringIO(html_data))
 print(f"Found {len(tables)} tables on the page")
 
-# Inspect a few to find the one you actually want
-print(tables[0].head())    # first table found (often an infobox-style summary table)
-print(tables[1].head())    # second table found
+# Inspect the table to confirm it looks right
+print(tables[0].head())    # the hockey team stats table -> team name, year, wins, losses, etc.
 
 # -----------------------------------------------------------
 
 print("\n================= pd.read_html() USEFUL PARAMETERS =================")
 # match="text" -> only return tables that contain this text somewhere (great for narrowing down)
-# tables_filtered = pd.read_html(url, match="Revenue")
+# tables_filtered = pd.read_html(url, match="Wins")
 
-# attrs={"class": "wikitable"} -> only tables with this exact HTML attribute
-# tables_filtered = pd.read_html(url, attrs={"class": "wikitable"})
+# attrs={"class": "table"} -> only tables with this exact HTML attribute
+# tables_filtered = pd.read_html(url, attrs={"class": "table"})
 
 # header=0 -> same meaning as in read_csv(): treat row 0 as column names
 # tables_filtered = pd.read_html(url, header=0)
@@ -142,8 +141,8 @@ print("\n================= pd.read_html() USEFUL PARAMETERS =================")
 print("\n================= SAVING A SCRAPED TABLE TO CSV =================")
 # Once you've picked the right table out of the list, save it like any DataFrame
 chosen_table = tables[0]
-chosen_table.to_csv("ibm_wiki_table.csv", index=False)
-print("Saved to ibm_wiki_table.csv")
+chosen_table.to_csv("hockey_team_stats.csv", index=False)
+print("Saved to hockey_team_stats.csv")
 
 # -----------------------------------------------------------
 
