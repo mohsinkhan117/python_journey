@@ -3,16 +3,7 @@ import pandas as pd
 import requests
 import os
 
-# ============================================================
-# RANDOMUSER LIBRARY (pip install randomuser) — PANDAS, CSV, IMAGES
-# This is a Python WRAPPER around the randomuser.me API - it hides
-# all the raw requests.get()/JSON-parsing work behind clean getter
-# methods, so you work with normal Python objects instead of dicts.
-# ============================================================
-#
-# NOTE: this script makes REAL network calls, so run it on your
-# own machine with internet access.
-#   pip install randomuser pandas requests
+
 #
 # Library docs / source: https://pypi.org/project/randomuser/
 # Underlying API docs:   https://randomuser.me/documentation
