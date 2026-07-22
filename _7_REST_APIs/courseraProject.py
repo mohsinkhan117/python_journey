@@ -13,10 +13,20 @@ print(bs.title.string)    # just the text inside <title>
 print(bs.h1.string)   
 print(bs.a)          
 print("====== Anchors ==========\n")
-
+anchorsList=[]
 anchors=bs.find_all("a", href=True)
 for i,anchor in enumerate(anchors):
-     print(f"{i}          {anchor}\n")
+     anchorsList.append({
+        "Index": i,
+        "Text": anchor.get_text(strip=True),
+        "URL": anchor["href"]
+    })
+    #  print(f"{i}          {anchor}\n")
+print(len(anchorsList))
+anchorsDF=pd.DataFrame(anchorsList)
+anchorsCSV=anchorsDF.to_csv("AnchorsList",index=False)
+
+
 # first_table=bs.find("table")
 # all_tables=bs.find_all("table")
 # print(first_table)
