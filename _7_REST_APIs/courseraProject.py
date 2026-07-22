@@ -10,8 +10,13 @@ bs=BeautifulSoup(html_text,'lxml')
 print(bs.h3)
 print(bs.title)          # the <title> tag itself
 print(bs.title.string)    # just the text inside <title>
-print(bs.h1.string)              # the first <h1> tag on the page
-print(bs.a) 
+print(bs.h1.string)   
+print(bs.a)          
+print("====== Anchors ==========\n")
+
+anchors=bs.find_all("a", href=True)
+for i,anchor in enumerate(anchors):
+     print(f"{i}          {anchor}\n")
 # first_table=bs.find("table")
 # all_tables=bs.find_all("table")
 # print(first_table)
